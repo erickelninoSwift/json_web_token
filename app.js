@@ -10,12 +10,13 @@ const errorHandlerMiddleware = require("./middleware/error-handler");
 // middleware
 app.use(express.static("./public"));
 app.use(express.json());
+app.use(MainRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 3000;
-app.use("/api/v1/", MainRouter);
+const port = process.env.PORT || 8080;
+
 const start = async () => {
   try {
     app.listen(port, () =>
